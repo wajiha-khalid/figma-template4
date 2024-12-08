@@ -14,6 +14,8 @@ import BlogSection from "./components/BlogSection";
 export default function Home() {
   return (
     <div>
+
+      {/* components */}
     <HeroSection/>
   <FeaturedProducts/>
   <LatestProducts/>

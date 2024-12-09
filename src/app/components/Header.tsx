@@ -15,20 +15,20 @@ function Header() {
       <TopBar /> {/* Top Bar */}
 
       {/* Main Header */}
-      <header className="w-full h-[80px] flex justify-center items-center border-b-2 sticky top-0 bg-white z-50">
-        <div className="w-full max-w-[1200px] h-full flex justify-between items-center px-6">
+      <header className="w-full h-[70px] flex justify-center items-center border-b sticky top-0 bg-white z-50">
+        <div className="w-full max-w-[1200px] h-full flex justify-between items-center px-4 sm:px-6">
           {/* Left Side (Logo) */}
           <div className="flex items-center">
-            <h1 className="text-3xl font-bold">Hekto</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold">Hekto</h1>
           </div>
 
           {/* Center Navigation Links (Hidden on Small Screens) */}
-          <nav className="hidden sm:flex gap-x-6">
+          <nav className="hidden sm:flex gap-x-4 md:gap-x-6">
             {["Home", "Pages", "Products", "Blog", "Shop", "Contact"].map((item, index) => (
               <Link
                 key={index}
                 href={`/${item.toLowerCase()}`}
-                className="hover:text-[#FB2E86] transition-colors"
+                className="hover:text-[#FB2E86] text-sm md:text-base transition-colors"
               >
                 {item}
               </Link>
@@ -36,16 +36,16 @@ function Header() {
           </nav>
 
           {/* Right Side (Search Bar and Mobile Menu Icon) */}
-          <div className="flex items-center gap-x-4">
+          <div className="flex items-center gap-x-3 sm:gap-x-4">
             {/* Search Bar */}
             <div className="hidden sm:flex items-center border rounded-md overflow-hidden bg-gray-100">
               <input
                 type="text"
                 placeholder="What are you looking for?"
-                className="w-60 px-3 py-2 text-sm outline-none bg-transparent"
+                className="w-40 sm:w-60 px-3 py-2 text-xs sm:text-sm outline-none bg-transparent"
               />
               <button className="p-2 bg-[#FB2E86] text-white hover:bg-[#F94C9B] transition-colors">
-                <div className="w-5 h-5" ><HiMiniMagnifyingGlass/></div>  
+                <HiMiniMagnifyingGlass className="w-5 h-5" />
               </button>
             </div>
 
@@ -63,13 +63,13 @@ function Header() {
 
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <div className="sm:hidden bg-gray-100 w-full flex flex-col gap-y-4 px-5 py-4">
-          <nav className="flex flex-col gap-y-2">
+        <div className="sm:hidden bg-gray-50 w-full flex flex-col gap-y-4 px-4 py-4 border-t">
+          <nav className="flex flex-col gap-y-3">
             {["Home", "Pages", "Products", "Blog", "Shop", "Contact"].map((item, index) => (
               <Link
                 key={index}
                 href={`/${item.toLowerCase()}`}
-                className="hover:text-[#FB2E86] transition-colors"
+                className="text-sm font-medium hover:text-[#FB2E86] transition-colors"
               >
                 {item}
               </Link>
@@ -84,7 +84,7 @@ function Header() {
               className="w-full px-3 py-2 text-sm outline-none bg-transparent"
             />
             <button className="p-2 bg-[#FB2E86] text-white hover:bg-[#F94C9B] transition-colors">
-             <div className="w-5 h-5"> <HiMiniMagnifyingGlass  /> </div> 
+              <HiMiniMagnifyingGlass className="w-5 h-5" />
             </button>
           </div>
         </div>

@@ -19,7 +19,7 @@ function BlogSection() {
       date: "21 August, 2020",
       title: "Top Essential Trends in 2020",
       description: "More off this less hello samlande lied much over tightly circa horse taped mightly.",
-      titleColor: "#FB2E86", // Pink color for title and "Read More"
+      titleColor: "#FB2E86", // Pink color for title
     },
     {
       id: 3,
@@ -33,46 +33,69 @@ function BlogSection() {
   ];
 
   return (
-    <div className="w-full bg-white py-20">
-      {/* Heading */}
-      <h2 className="text-center text-[#151875] text-3xl font-bold mb-12">Latest Blog</h2>
+    <div className="w-full bg-white py-16 px-6 md:px-12 lg:px-16">
+      {/* Section Heading */}
+      <h2 className="text-center text-[#151875] text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+        Latest Blog
+      </h2>
 
       {/* Blog Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 max-w-screen-xl mx-auto">
         {blogs.map((blog) => (
-          <div key={blog.id} className="flex flex-col items-start">
+          <div
+            key={blog.id}
+            className="flex flex-col items-start bg-white p-4 md:p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg"
+          >
             {/* Blog Image */}
-            <div className="w-full h-[300px] relative rounded-lg shadow-md bg-white p-2">
+            <div className="relative w-full h-48 md:h-60 lg:h-72 rounded-lg overflow-hidden">
               <Image
                 src={blog.img}
                 alt={blog.title}
                 layout="fill"
                 objectFit="cover"
-                className="rounded-md"
+                className="rounded-lg"
               />
             </div>
 
-            {/* Author and Date */}
-            <div className="flex items-center space-x-2 mt-4">
-              {/* Pen Icon */}
-              <Image src="/images/calendar.png" alt="Pen" width={20} height={20} />
-              <span className="text-[#151875] font-medium">{blog.author}</span>
+            {/* Author & Date Section */}
+            <div className="flex items-center space-x-2 mt-3">
+              {/* Author Icon */}
+              <Image
+                src="/images/pen.png"
+                alt="Pen"
+                width={20}
+                height={20}
+                className="text-[#151875]"
+              />
+              <span className="text-[#151875] font-medium text-sm">{blog.author}</span>
+
               {/* Calendar Icon */}
-              <Image src="/images/pen.png" alt="Calendar" width={20} height={20} />
-              <span className="text-[#151875] font-medium">{blog.date}</span>
+              <Image
+                src="/images/calendar.png"
+                alt="Calendar"
+                width={20}
+                height={20}
+                className="text-[#151875]"
+              />
+              <span className="text-[#151875] font-medium text-sm">{blog.date}</span>
             </div>
 
             {/* Blog Title */}
-            <h3 className="font-bold text-lg mt-4" style={{ color: blog.titleColor }}>
+            <h3
+              className="font-bold text-lg md:text-xl lg:text-2xl mt-3 leading-snug"
+              style={{ color: blog.titleColor }}
+            >
               {blog.title}
             </h3>
 
             {/* Blog Description */}
-            <p className="text-gray-600 mt-2">{blog.description}</p>
+            <p className="text-gray-600 text-sm md:text-base mt-2 leading-5">
+              {blog.description}
+            </p>
 
             {/* Read More */}
             <button
-              className="underline text-sm font-medium mt-4"
+              className="text-sm md:text-base font-medium mt-3 underline text-pink-600 hover:text-pink-800 transition-all duration-200"
               style={{ color: blog.titleColor }}
             >
               Read More

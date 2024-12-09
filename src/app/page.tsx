@@ -4,8 +4,12 @@ import FeaturedProducts from "./components/Featuredproductsection";
 import LatestProducts from "./components/LatestProducts";
 import OneMore from "./components/OneMore";
 import TrendingProducts from "./components/TrendingProducts";
-import Th from "./components/TH";
+
 import BlogSection from "./components/BlogSection";
+import Discount from "./components/Discount";
+import TopCategories from "./components/TopCategories";
+import Newslater from "./components/Newslater";
+import Th from "./components/TH";
 
 
 
@@ -22,7 +26,9 @@ export default function Home() {
   <OneMore/>
   <TrendingProducts/>
   <Th/>
-  
+  <Discount/>
+  <TopCategories/>
+  <Newslater/>
 <BlogSection/>
     </div>
       );

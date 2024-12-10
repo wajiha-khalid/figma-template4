@@ -19,7 +19,7 @@ const TopBar = () => {
             className="flex items-center gap-2 hover:text-gray-200"
           >
             <FaEnvelope />
-            <span>mhhasanul@gmail.com</span>
+            <span>wajihawajihakhalid@gmail.com</span>
           </a>
           {/* Phone */}
           <a

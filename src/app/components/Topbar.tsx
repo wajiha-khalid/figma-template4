@@ -15,7 +15,7 @@ const TopBar = () => {
         <div className="flex flex-wrap items-center justify-center gap-6">
           {/* Email */}
           <a
-            href="mailto:mhhasanul@gmail.com"
+            href="mailto:wajihawajihakhalid@gmail.com"
             className="flex items-center gap-2 hover:text-gray-200"
           >
             <FaEnvelope />

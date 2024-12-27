@@ -77,7 +77,7 @@ function AccountPage() {
 
             {/* Create Account */}
             <div className="text-center mt-6 text-gray-600">
-              Don’t have an Account?{' '}
+              Do not have an Account?{' '}
               <Link href="/createaccount" className="text-[#FB2E86] hover:underline">
                 Create account
               </Link>

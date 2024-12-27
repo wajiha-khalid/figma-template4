@@ -1,94 +1,222 @@
 'use client';
 
-import { useState } from "react";
 import Link from "next/link";
-import { HiMiniMagnifyingGlass } from "react-icons/hi2";
-import { HiMenu } from "react-icons/hi";
-import { HiX } from "react-icons/hi";
-import TopBar from "./Topbar"; // Import the TopBar
+import { useState } from "react";
+import { 
+  MagnifyingGlassIcon, 
+  ShoppingCartIcon, 
+  HeartIcon, 
+  Bars3Icon, 
+  XMarkIcon 
+} from "@heroicons/react/24/outline";
+import TopBar from "./Topbar";
 
 function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPagesDropdownOpen, setIsPagesDropdownOpen] = useState(false);
 
   return (
     <>
       {/* Top Bar */}
-      <TopBar />
+      <TopBar/>
 
       {/* Main Header */}
-      <header className="w-full h-[70px] flex justify-center items-center border-b sticky top-0 bg-white z-50">
-        <div className="w-full max-w-[1200px] h-full flex justify-between items-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-          
-          {/* Left Side (Logo Section) */}
-          <div className="flex items-center">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Hekto</h1>
-          </div>
+      <div className="w-full h-[80px] flex justify-center items-center border-b-2">
+        <div className="w-full max-w-[1200px] h-full flex justify-between items-center px-10">
+          {/* Left Section: Logo and Search Bar */}
+          <div className="flex items-center gap-8">
+            {/* Logo */}
+            <h1 className="text-3xl font-bold">Hekto</h1>
 
-          {/* Center Navigation - Visible on md and larger screens */}
-          <nav className="hidden sm:flex md:flex gap-x-4 md:gap-x-6 lg:gap-x-8">
-            {["Home", "Pages", "Products", "Blog", "Shop", "Contact"].map((item, index) => (
-              <Link
-                key={index}
-                href={`/${item.toLowerCase()}`}
-                className="hover:text-[#FB2E86] text-sm md:text-base lg:text-lg transition-colors"
-              >
-                {item}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Right Side (Search & Mobile Menu Icon) */}
-          <div className="flex items-center gap-x-3 sm:gap-x-4 md:gap-x-5 lg:gap-x-6">
-            
-            {/* Search Bar - Visible on medium and larger devices */}
+            {/* Search Bar */}
             <div className="hidden sm:flex items-center border rounded-md overflow-hidden bg-gray-100">
               <input
                 type="text"
-                placeholder="Search..."
-                className="w-32 sm:w-48 md:w-60 px-3 py-1 text-xs md:text-sm outline-none bg-transparent"
+                placeholder="What are you looking for?"
+                className="w-60 px-3 py-2 text-sm outline-none bg-transparent"
               />
               <button className="p-2 bg-[#FB2E86] text-white hover:bg-[#F94C9B] transition-colors">
-                <HiMiniMagnifyingGlass className="w-5 h-5" />
+                <MagnifyingGlassIcon className="w-5 h-5" />
               </button>
             </div>
-
-            {/* Mobile Menu Icon */}
-            <button
-              className="sm:hidden text-2xl md:text-3xl"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle Menu"
-            >
-              {mobileMenuOpen ? <HiX /> : <HiMenu />}
-            </button>
           </div>
-        </div>
-      </header>
 
-      {/* Mobile Navigation Menu */}
-      {mobileMenuOpen && (
-        <div className="sm:hidden bg-gray-50 w-full flex flex-col gap-y-4 px-4 py-4 border-t">
-          <nav className="flex flex-col gap-y-3">
-            {["Home", "Pages", "Products", "Blog", "Shop", "Contact"].map((item, index) => (
-              <Link
-                key={index}
-                href={`/${item.toLowerCase()}`}
-                className="text-sm font-medium hover:text-[#FB2E86] transition-colors"
-              >
-                {item}
+          {/* Center Section: Navigation Links */}
+          <div className="hidden sm:flex items-center gap-x-8">
+            <ul className="flex gap-x-8 items-center">
+              <li>
+                <Link className="hover:text-[#FB2E86] transition-colors" href="/">
+                  Home
+                </Link>
+              </li>
+              <li className="relative">
+                <button
+                  className="hover:text-[#FB2E86] transition-colors"
+                  onClick={() => setIsPagesDropdownOpen(!isPagesDropdownOpen)} // Toggle the Pages menu
+                >
+                  Pages
+                </button>
+                {isPagesDropdownOpen && (
+                  <ul className="absolute top-full mt-2 bg-white shadow-md rounded-md text-black text-sm">
+                    <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/cart">Cart</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/checkout">Billing Details</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/ordercompleted">Order Completed</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/about">About Us</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/contact-us">Contact Us</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/account">My Account</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/creatorpage">About Creator</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/faq">FAQ</Link>
+                    </li>
+                  </ul>
+                )}
+              </li>
+              <li>
+                <Link className="hover:text-[#FB2E86] transition-colors" href="/blog">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#FB2E86] transition-colors" href="/shoplist">
+                  Shop
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#FB2E86] transition-colors" href="/contact-us">
+                Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Right Section: Icons */}
+          <div className="hidden sm:flex items-center gap-x-6">
+            <Link href="/cart" className="hover:text-[#FB2E86] transition-colors flex items-center gap-1">
+              <ShoppingCartIcon className="w-5 h-5" />
+              <span>Cart</span>
+            </Link>
+            <Link href="/wishlist" className="hover:text-[#FB2E86] transition-colors flex items-center gap-1">
+              <HeartIcon className="w-5 h-5" />
+              <span>Wishlist</span>
+            </Link>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="sm:hidden flex items-center"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <XMarkIcon className="w-6 h-6 text-black" />
+            ) : (
+              <Bars3Icon className="w-6 h-6 text-black" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="sm:hidden flex flex-col items-center px-4 py-2 border-t">
+          {/* Mobile Pages Dropdown */}
+          <button
+            className="hover:text-[#FB2E86] transition-colors"
+            onClick={() => setIsPagesDropdownOpen(!isPagesDropdownOpen)}
+          >
+            Pages
+          </button>
+          {isPagesDropdownOpen && (
+            <ul className="w-full text-center bg-white shadow-md rounded-md text-black text-sm">
+              <li className="px-4 py-2 hover:bg-gray-100">
+                <Link href="/cart">Cart</Link>
+              </li>
+              <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/checkout">Billing Details</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/ordercompleted">Order Completed</Link>
+                    </li>
+              <li className="px-4 py-2 hover:bg-gray-100">
+                <Link href="/about">About Us</Link>
+              </li>
+              <li className="px-4 py-2 hover:bg-gray-100">
+                <Link href="/contact-us">Contact Us</Link>
+              </li>
+              <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/account">My Account</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/forgetpassword">Forget Password</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100">
+                      <Link href="/creatorpage">About Creator</Link>
+                    </li>
+              <li className="px-4 py-2 hover:bg-gray-100">
+                <Link href="/faq">FAQ</Link>
+              </li>
+            </ul>
+          )}
+
+          {/* Mobile Navigation Links */}
+          <ul className="w-full text-center">
+            <li>
+              <Link className="block py-2 hover:text-[#FB2E86]" href="/">
+                Home
               </Link>
-            ))}
-          </nav>
+            </li>
+            <li>
+              <Link className="block py-2 hover:text-[#FB2E86]" href="/blog">
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link className="block py-2 hover:text-[#FB2E86]" href="/shoplist">
+                Shop
+              </Link>
+            </li>
+            <li>
+              <Link className="block py-2 hover:text-[#FB2E86]" href="/account">
+                My Account
+              </Link>
+            </li>
+          </ul>
 
           {/* Mobile Search Bar */}
-          <div className="flex items-center border rounded-md overflow-hidden bg-white">
+          <div className="flex items-center border rounded-md overflow-hidden bg-gray-100 px-4 py-2 mx-4 mt-4">
             <input
               type="text"
               placeholder="Search"
               className="w-full px-3 py-2 text-sm outline-none bg-transparent"
             />
             <button className="p-2 bg-[#FB2E86] text-white hover:bg-[#F94C9B] transition-colors">
-              <HiMiniMagnifyingGlass className="w-5 h-5" />
+              <MagnifyingGlassIcon className="w-5 h-5" />
             </button>
+          </div>
+
+          {/* Mobile Cart and Wishlist */}
+          <div className="flex justify-around px-4 py-2 border-t">
+            <Link href="/cart" className="flex items-center gap-1 text-sm hover:text-[#FB2E86]">
+              <ShoppingCartIcon className="w-5 h-5" />
+              <span>Cart</span>
+            </Link>
+            <Link href="#" className="flex items-center gap-1 text-sm hover:text-[#FB2E86]">
+              <HeartIcon className="w-5 h-5" />
+              <span>Wishlist</span>
+            </Link>
           </div>
         </div>
       )}

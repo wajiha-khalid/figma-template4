@@ -12,6 +12,7 @@ import {
 import TopBar from "./TopBar";
 
 
+
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPagesDropdownOpen, setIsPagesDropdownOpen] = useState(false);
@@ -20,7 +21,7 @@ function Header() {
     <>
       {/* Top Bar */}
       
-      <TopBar />
+      <TopBar/>
       {/* Main Header */}
       <div className="w-full h-[80px] flex justify-center items-center border-b-2">
         <div className="w-full max-w-[1200px] h-full flex justify-between items-center px-10">
